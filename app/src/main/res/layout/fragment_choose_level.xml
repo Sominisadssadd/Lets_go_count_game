@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.ChooseLevelFragment">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|top"
+        android:layout_marginTop="10dp"
+        android:text="@string/choose_level_title"
+        android:textSize="28sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/buttonTestLevel"
+            style="@style/OptionButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/test_mode_text" />
+
+        <Button
+            android:id="@+id/buttonEasyLevel"
+            style="@style/OptionButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#74D603"
+            android:text="@string/easy_mode_text" />
+
+        <Button
+            android:id="@+id/buttonNormalLevel"
+            style="@style/OptionButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#EAD200"
+            android:text="@string/normal_mode_text" />
+
+        <Button
+            android:id="@+id/buttonHardLevel"
+            style="@style/OptionButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/holo_red_dark"
+            android:text="@string/hard_mode_text" />
+
+    </LinearLayout>
+
+
+</FrameLayout>

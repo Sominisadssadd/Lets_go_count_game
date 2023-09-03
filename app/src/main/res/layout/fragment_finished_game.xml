@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.FinishedGameFragment">
+
+
+    <ImageView
+        android:id="@+id/imageViewSmile"
+        android:layout_width="190dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/ic_smile" />
+
+    <TextView
+        android:id="@+id/textViewRequiredScore"
+        style="@style/FinishedTextOption"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/required_score"
+        app:layout_constraintTop_toBottomOf="@id/imageViewSmile" />
+
+    <TextView
+        android:id="@+id/textViewScoreAnswer"
+        style="@style/FinishedTextOption"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/score_answers"
+        app:layout_constraintTop_toBottomOf="@id/textViewRequiredScore" />
+
+    <TextView
+        android:id="@+id/textViewRequired_percentage"
+        style="@style/FinishedTextOption"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/required_percentage"
+        app:layout_constraintTop_toBottomOf="@id/textViewScoreAnswer" />
+
+    <TextView
+        style="@style/FinishedTextOption"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/score_percentage"
+        app:layout_constraintTop_toBottomOf="@id/textViewRequired_percentage" />
+
+
+    <Button
+        style="@style/OptionButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/retry"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
