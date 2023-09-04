@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.letsgocount.R
 import com.example.letsgocount.databinding.FragmentWelcomeBinding
+import com.example.letsgocount.presentation.ChooseLevelFragment.Companion.CHOOSE_LEVEL_FRAGMENT
 
 
 class WelcomeFragment : Fragment() {
@@ -37,6 +38,7 @@ class WelcomeFragment : Fragment() {
     private fun launchChooseLevelFragment() {
         requireActivity().supportFragmentManager.beginTransaction()
             .replace(R.id.fragmentContainer, ChooseLevelFragment.newInstance())
+            .addToBackStack(CHOOSE_LEVEL_FRAGMENT)
             .commit()
     }
 
