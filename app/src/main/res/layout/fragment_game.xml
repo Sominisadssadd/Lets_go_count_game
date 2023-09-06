@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.GameFragment">
+
+
+    <TextView
+        android:id="@+id/textVewTimer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/violet"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="00:00" />
+
+    <TextView
+        android:id="@+id/textViewSumNumber"
+        style="@style/QuestionTextOptions"
+        android:layout_width="144dp"
+        android:layout_height="144dp"
+        android:background="@drawable/circle_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textVewTimer"
+        tools:text="8" />
+
+    <TextView
+        android:id="@+id/visibleNumber"
+        style="@style/QuestionTextOptions"
+        android:layout_width="0dp"
+        android:layout_height="90dp"
+        android:background="@color/purple_700"
+        app:layout_constraintEnd_toStartOf="@id/hiddenNumber"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintTop_toBottomOf="@id/textViewSumNumber"
+        tools:text="6" />
+
+    <TextView
+        android:id="@+id/hiddenNumber"
+        style="@style/QuestionTextOptions"
+        android:layout_width="0dp"
+        android:layout_height="90dp"
+        android:background="@color/purple_700"
+        android:text="@string/question_mark"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/visibleNumber"
+        app:layout_constraintTop_toBottomOf="@id/textViewSumNumber" />
+
+    <TextView
+        android:id="@+id/textViewPercentAnswer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/progress_answers"
+        android:textColor="#4E4E4E"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewPercentAnswer" />
+
+
+    <TextView
+        style="@style/OptionTextStyle"
+        android:id="@+id/textViewAnswer4"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="#FF9800"
+        tools:text="5"
+        />
+
+    <TextView
+        style="@style/OptionTextStyle"
+        android:id="@+id/textViewAnswer5"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/textViewAnswer4"
+        android:background="#00BCD4"
+        tools:text="8"
+        />
+
+    <TextView
+        style="@style/OptionTextStyle"
+        android:id="@+id/textViewAnswer6"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/textViewAnswer5"
+        android:background="#F44336"
+        tools:text="9"
+        />
+
+    <TextView
+        style="@style/OptionTextStyle"
+        android:id="@+id/textViewAnswer1"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        app:layout_constraintBottom_toTopOf="@id/textViewAnswer4"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="#673AB7"
+        tools:text="2"
+        />
+
+    <TextView
+        style="@style/OptionTextStyle"
+        android:id="@+id/textViewAnswer2"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        app:layout_constraintBottom_toTopOf="@id/textViewAnswer5"
+        app:layout_constraintStart_toEndOf="@id/textViewAnswer1"
+        android:background="#4CAF50"
+        tools:text="7"
+        />
+
+    <TextView
+        style="@style/OptionTextStyle"
+        android:id="@+id/textViewAnswer3"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        app:layout_constraintTop_toTopOf="@id/textViewAnswer2"
+        app:layout_constraintStart_toEndOf="@id/textViewAnswer2"
+        android:background="#96007D"
+        tools:text="5"
+        />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
