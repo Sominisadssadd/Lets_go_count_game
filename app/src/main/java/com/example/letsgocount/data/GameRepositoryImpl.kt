@@ -12,8 +12,8 @@ object GameRepositoryImpl : GameRepository {
     private const val MIN_VISIBLE_NUMBER_VALUE = 1
 
     override fun generateNewQuestion(maxSum: Int, countOfAnswers: Int): Question {
-        val seedForRandom = System.currentTimeMillis()
-        val sumNumber = Random(seedForRandom).nextInt(MIN_SUM_FOR_QUESTION,maxSum + 1)
+//        val seedForRandom = System.currentTimeMillis()
+        val sumNumber = Random.nextInt(MIN_SUM_FOR_QUESTION,maxSum + 1)
         val visibleNumber = Random.nextInt(MIN_VISIBLE_NUMBER_VALUE, sumNumber)
         //использует HashSet для того чтобы исключить возможность содержания одинаковых чисел
         val listOfAnswers = HashSet<Int>()
@@ -42,7 +42,7 @@ object GameRepositoryImpl : GameRepository {
                     10,
                     5,
                     50,
-                    40
+                    50
                 )
             }
             Level.NORMAL -> {
@@ -50,7 +50,7 @@ object GameRepositoryImpl : GameRepository {
                     30,
                     10,
                     70,
-                    30
+                    40
                 )
             }
             Level.HARD -> {
@@ -58,7 +58,7 @@ object GameRepositoryImpl : GameRepository {
                     50,
                     15,
                     90,
-                    20
+                    30
                 )
             }
         }
