@@ -8,32 +8,26 @@ import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.OnBackPressedDispatcher
 import androidx.fragment.app.FragmentManager
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.letsgocount.R
 import com.example.letsgocount.databinding.FragmentFinishedGameBinding
 import com.example.letsgocount.domain.entities.GameResult
-import com.example.letsgocount.presentation.ChooseLevelFragment.Companion.CHOOSE_LEVEL_FRAGMENT
+
 
 
 class FinishedGameFragment : Fragment() {
 
 
-    private lateinit var gameResult: GameResult
+    private val args: FinishedGameFragmentArgs by navArgs()
+    private val gameResult
+        get() = args.gameResult
+
+
     private var _binding: FragmentFinishedGameBinding? = null
     private val binding: FragmentFinishedGameBinding
         get() = _binding ?: throw RuntimeException("FragmentFinishedGame == null")
 
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        parseArgs()
-
-    }
-
-    private fun parseArgs() {
-        requireArguments().getParcelable<GameResult>(KEY_GAME_RESULT)?.let {
-            gameResult = it
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,12 +44,52 @@ class FinishedGameFragment : Fragment() {
         //viewLifecycleOwner связывает обратный вызов с жизненным циклом фрагмента
         //что гарантирует нам выполнение действий при назад тогда когда видим данный фрагмент
 
-        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner,
-            object : OnBackPressedCallback(true) {
-                override fun handleOnBackPressed() {
-                    retryGame()
-                }
-            })
+        initialButtonOnBackPressed()
+        initFileds()
+
+    }
+
+    private fun initFileds() {
+        with(binding) {
+            imageViewSmile.setImageResource(getImageResId())
+            //NEW//
+            textViewScoreAnswer.text = String.format(
+                getString(R.string.score_answers),
+                gameResult.countOfRightAnswer
+            )
+            textViewRequiredPercentage.text = String.format(
+                getString(R.string.required_percentage),
+                gameResult.gameSettings.minPercentOfRightAnswer
+            )
+
+            textViewRequiredScore.text = String.format(
+                getString(R.string.required_score),
+                gameResult.gameSettings.minCountOfRightAnswer
+            )
+            textViewScorePercentage.text = String.format(
+                getString(R.string.score_percentage),
+                getPercentOfRightValue()
+            )
+
+        }
+    }
+
+    private fun getPercentOfRightValue() = with(gameResult) {
+        if (countOfRightAnswer == 0) {
+            0
+        } else {
+            ((countOfRightAnswer / countOfQuestion.toDouble()) * 100).toInt()
+        }
+    }
+
+    private fun getImageResId(): Int {
+        return when (gameResult.isWin) {
+            true -> R.drawable.ic_smile
+            false -> R.drawable.ic_sad
+        }
+    }
+
+    private fun initialButtonOnBackPressed() {
         binding.buttonTryAgain.setOnClickListener {
             retryGame()
         }
@@ -76,36 +110,19 @@ class FinishedGameFragment : Fragment() {
                 gameResult.gameSettings.minPercentOfRightAnswer.toString()
 
             val percentOfRightAnswer =
-                (gameResult.countOfRightAnswer  / 100) * gameResult.countOfQuestion*100
+                (gameResult.countOfRightAnswer / 100) * gameResult.countOfQuestion * 100
             textViewScorePercentage.text = percentOfRightAnswer.toString()
         }
 
     }
 
     private fun retryGame() {
-        requireActivity().supportFragmentManager.popBackStack(
-            GameFragment.GAME_FRAGMENT_NAME,
-            FragmentManager.POP_BACK_STACK_INCLUSIVE
-        )
+        findNavController().popBackStack()
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
-
-    companion object {
-
-        private const val KEY_GAME_RESULT = "result"
-
-        fun newInstanceFinishedGameFragment(gameResult: GameResult): FinishedGameFragment {
-            return FinishedGameFragment().apply {
-                arguments = Bundle().apply {
-                    putParcelable(KEY_GAME_RESULT, gameResult)
-                }
-            }
-        }
-    }
-
 
 }

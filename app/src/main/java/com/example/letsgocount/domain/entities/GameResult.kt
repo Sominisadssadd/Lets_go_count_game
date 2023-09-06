@@ -4,6 +4,7 @@ import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 import java.io.Serializable
 
+//Parcelable - более производительный чем Serializable
 @Parcelize
 data class GameResult(
     val isWin: Boolean,
