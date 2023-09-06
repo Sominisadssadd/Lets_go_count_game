@@ -56,10 +56,30 @@ class FinishedGameFragment : Fragment() {
                     retryGame()
                 }
             })
-
         binding.buttonTryAgain.setOnClickListener {
             retryGame()
         }
+        parseDataToFields()
+    }
+
+
+    private fun parseDataToFields() {
+        if (gameResult.isWin) {
+            binding.imageViewSmile.setImageResource(R.drawable.ic_smile)
+        }
+
+        binding.apply {
+            textViewRequiredScore.text =
+                gameResult.gameSettings.minCountOfRightAnswer.toString()
+            textViewScoreAnswer.text = gameResult.countOfRightAnswer.toString()
+            textViewRequiredPercentage.text =
+                gameResult.gameSettings.minPercentOfRightAnswer.toString()
+
+            val percentOfRightAnswer =
+                (gameResult.countOfRightAnswer  / 100) * gameResult.countOfQuestion*100
+            textViewScorePercentage.text = percentOfRightAnswer.toString()
+        }
+
     }
 
     private fun retryGame() {
