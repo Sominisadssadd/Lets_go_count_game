@@ -5,10 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.example.letsgocount.R
 import com.example.letsgocount.databinding.FragmentChooseLevelBinding
 import com.example.letsgocount.domain.entities.Level
-import com.example.letsgocount.presentation.GameFragment.Companion.GAME_FRAGMENT_NAME
 
 
 class ChooseLevelFragment : Fragment() {
@@ -45,10 +45,9 @@ class ChooseLevelFragment : Fragment() {
 
 
     private fun launchGameFragment(level: Level) {
-        requireActivity().supportFragmentManager.beginTransaction()
-            .replace(R.id.fragmentContainer, GameFragment.newInstanceGameFragment(level))
-            .addToBackStack(GAME_FRAGMENT_NAME)
-            .commit()
+        findNavController().navigate(
+            ChooseLevelFragmentDirections.actionChooseLevelFragmentToGameFragment(level)
+        )
     }
 
     override fun onCreateView(
@@ -70,15 +69,6 @@ class ChooseLevelFragment : Fragment() {
         _binding = null
     }
 
-    companion object {
 
-        const val CHOOSE_LEVEL_FRAGMENT = "clFragment"
-
-        fun newInstance(): ChooseLevelFragment {
-            return ChooseLevelFragment()
-
-        }
-
-    }
 
 }
