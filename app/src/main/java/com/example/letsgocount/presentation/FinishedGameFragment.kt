@@ -50,22 +50,23 @@ class FinishedGameFragment : Fragment() {
     }
 
     private fun initFileds() {
+        binding.gameResult = gameResult
         with(binding) {
             imageViewSmile.setImageResource(getImageResId())
             //NEW//
-            textViewScoreAnswer.text = String.format(
-                getString(R.string.score_answers),
-                gameResult.countOfRightAnswer
-            )
-            textViewRequiredPercentage.text = String.format(
-                getString(R.string.required_percentage),
-                gameResult.gameSettings.minPercentOfRightAnswer
-            )
-
-            textViewRequiredScore.text = String.format(
-                getString(R.string.required_score),
-                gameResult.gameSettings.minCountOfRightAnswer
-            )
+//            textViewScoreAnswer.text = String.format(
+//                getString(R.string.score_answers),
+//                gameResult.countOfRightAnswer
+//            )
+//            textViewRequiredPercentage.text = String.format(
+//                getString(R.string.required_percentage),
+//                gameResult.gameSettings.minPercentOfRightAnswer
+//            )
+//
+//            textViewRequiredScore.text = String.format(
+//                getString(R.string.required_score),
+//                gameResult.gameSettings.minCountOfRightAnswer
+//            )
             textViewScorePercentage.text = String.format(
                 getString(R.string.score_percentage),
                 getPercentOfRightValue()
@@ -92,26 +93,6 @@ class FinishedGameFragment : Fragment() {
     private fun initialButtonOnBackPressed() {
         binding.buttonTryAgain.setOnClickListener {
             retryGame()
-        }
-        parseDataToFields()
-    }
-
-
-    private fun parseDataToFields() {
-        if (gameResult.isWin) {
-            binding.imageViewSmile.setImageResource(R.drawable.ic_smile)
-        }
-
-        binding.apply {
-            textViewRequiredScore.text =
-                gameResult.gameSettings.minCountOfRightAnswer.toString()
-            textViewScoreAnswer.text = gameResult.countOfRightAnswer.toString()
-            textViewRequiredPercentage.text =
-                gameResult.gameSettings.minPercentOfRightAnswer.toString()
-
-            val percentOfRightAnswer =
-                (gameResult.countOfRightAnswer / 100) * gameResult.countOfQuestion * 100
-            textViewScorePercentage.text = percentOfRightAnswer.toString()
         }
 
     }

@@ -7,4 +7,11 @@ data class GameSettings(
     val minCountOfRightAnswer: Int,
     val minPercentOfRightAnswer: Int,
     val countOfSecond: Int
-) : Serializable
+) : Serializable {
+    //ТАКЖЕ, РАБОТАЕМ С ПОЛЯ КЛАССА В ЕГО ЖЕ МЕТОДАХ
+    val minCountOfRightAnswerString: String
+        get() = minCountOfRightAnswer.toString()
+
+    val minPercentOfRightAnswerString: String
+        get() = minPercentOfRightAnswer.toString()
+}

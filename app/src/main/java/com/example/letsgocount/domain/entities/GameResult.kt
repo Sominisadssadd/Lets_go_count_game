@@ -11,4 +11,10 @@ data class GameResult(
     val countOfRightAnswer: Int,
     val countOfQuestion: Int,
     val gameSettings: GameSettings
-) : Parcelable
+) : Parcelable {
+    //ТАКЖЕ, РАБОТАЕМ С ПОЛЯ КЛАССА В ЕГО ЖЕ МЕТОДАХ
+    val countOfRightAnswerString: String
+        get() = countOfRightAnswer.toString()
+
+
+}
