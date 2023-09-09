@@ -21,7 +21,7 @@
             android:layout_width="190dp"
             android:layout_height="0dp"
             android:layout_marginTop="15dp"
-            android:src="@drawable/ic_sad"
+            srcByGameResult="@{gameResult.win}"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -32,7 +32,7 @@
             style="@style/FinishedTextOption"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{gameResult.gameSettings.minCountOfRightAnswerString}"
+            requireAnswer="@{gameResult.gameSettings.minCountOfRightAnswer}"
             app:layout_constraintTop_toBottomOf="@id/imageViewSmile" />
 
         <TextView
@@ -40,7 +40,7 @@
             style="@style/FinishedTextOption"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{gameResult.countOfRightAnswerString}"
+            currentAnswer="@{gameResult.countOfRightAnswer}"
             app:layout_constraintTop_toBottomOf="@id/textViewRequiredScore" />
 
         <TextView
@@ -48,7 +48,7 @@
             style="@style/FinishedTextOption"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{gameResult.gameSettings.minPercentOfRightAnswerString}"
+            requirePercentage="@{gameResult.gameSettings.minPercentOfRightAnswer}"
             app:layout_constraintTop_toBottomOf="@id/textViewScoreAnswer" />
 
         <TextView
@@ -56,7 +56,7 @@
             style="@style/FinishedTextOption"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/score_percentage"
+            currentPercentage="@{gameResult}"
             app:layout_constraintTop_toBottomOf="@id/textViewRequired_percentage" />
 
 
