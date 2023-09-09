@@ -37,64 +37,19 @@ class FinishedGameFragment : Fragment() {
         _binding = FragmentFinishedGameBinding.inflate(inflater, container, false)
         return binding.root
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         //viewLifecycleOwner связывает обратный вызов с жизненным циклом фрагмента
         //что гарантирует нам выполнение действий при назад тогда когда видим данный фрагмент
 
         initialButtonOnBackPressed()
-        initFileds()
-
-    }
-
-    private fun initFileds() {
         binding.gameResult = gameResult
-        with(binding) {
-            imageViewSmile.setImageResource(getImageResId())
-            //NEW//
-//            textViewScoreAnswer.text = String.format(
-//                getString(R.string.score_answers),
-//                gameResult.countOfRightAnswer
-//            )
-//            textViewRequiredPercentage.text = String.format(
-//                getString(R.string.required_percentage),
-//                gameResult.gameSettings.minPercentOfRightAnswer
-//            )
-//
-//            textViewRequiredScore.text = String.format(
-//                getString(R.string.required_score),
-//                gameResult.gameSettings.minCountOfRightAnswer
-//            )
-            textViewScorePercentage.text = String.format(
-                getString(R.string.score_percentage),
-                getPercentOfRightValue()
-            )
 
-        }
     }
-
-    private fun getPercentOfRightValue() = with(gameResult) {
-        if (countOfRightAnswer == 0) {
-            0
-        } else {
-            ((countOfRightAnswer / countOfQuestion.toDouble()) * 100).toInt()
-        }
-    }
-
-    private fun getImageResId(): Int {
-        return when (gameResult.isWin) {
-            true -> R.drawable.ic_smile
-            false -> R.drawable.ic_sad
-        }
-    }
-
     private fun initialButtonOnBackPressed() {
         binding.buttonTryAgain.setOnClickListener {
             retryGame()
         }
-
     }
 
     private fun retryGame() {
